@@ -95,6 +95,7 @@ export default function RegistrationForm({ representante }: RegistrationFormProp
   const [birthValid, setBirthValid] = useState<boolean | null>(null)
   const [whatsappValid, setWhatsappValid] = useState<boolean | null>(null)
   const [whatsappValidating, setWhatsappValidating] = useState(false)
+  const [selectedOperator, setSelectedOperator] = useState<"VIVO" | "TIM" | "CLARO" | null>(null)
 
   const [formData, setFormData] = useState({
     cpf: "",
@@ -382,7 +383,14 @@ export default function RegistrationForm({ representante }: RegistrationFormProp
   }
 
   const goNext = () => { if (canContinue() && step < 5) setStep(step + 1) }
-  const goBack = () => { if (step > 0) setStep(step - 1) }
+  const goBack = () => {
+    if (step > 0) {
+      if (step === 2) {
+        setSelectedOperator(null)
+      }
+      setStep(step - 1)
+    }
+  }
 
   useEffect(() => {
     const video = document.createElement("video")
@@ -481,33 +489,95 @@ export default function RegistrationForm({ representante }: RegistrationFormProp
         {step === 1 && (
           <Card>
             <CardContent className="pt-6 px-6">
-              <div className="flex flex-col gap-2">
-                <Label htmlFor="plan">{"Plano"} <span className="text-red-500">*</span></Label>
-                <Select value={formData.plan_id} onValueChange={(value) => handleInputChange("plan_id", value)} required>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Selecione um plano" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <div className="px-2 py-1.5 text-sm font-semibold pointer-events-none" style={{ color: "#8B5CF6" }}>{"VIVO"}</div>
-                    {PLANS.VIVO.map((plan) => (
-                      <SelectItem key={plan.id} value={plan.id} className="text-gray-900 font-medium">
-                        {plan.name} - R$ {plan.price.toFixed(2).replace(".", ",")}
-                      </SelectItem>
-                    ))}
-                    <div className="px-2 py-1.5 text-sm font-semibold mt-2 pointer-events-none" style={{ color: "#1E90FF" }}>{"TIM"}</div>
-                    {PLANS.TIM.map((plan) => (
-                      <SelectItem key={plan.id} value={plan.id} className="text-gray-900 font-medium">
-                        {plan.name} - R$ {plan.price.toFixed(2).replace(".", ",")}
-                      </SelectItem>
-                    ))}
-                    <div className="px-2 py-1.5 text-sm font-semibold mt-2 pointer-events-none" style={{ color: "#DC143C" }}>{"CLARO"}</div>
-                    {PLANS.CLARO.map((plan) => (
-                      <SelectItem key={plan.id} value={plan.id} className="text-gray-900 font-medium">
-                        {plan.name} - R$ {plan.price.toFixed(2).replace(".", ",")}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+              <div className="flex flex-col gap-4">
+                {/* Seletores de Operadora */}
+                {!selectedOperator && (
+                  <div className="flex flex-col gap-3">
+                    <button
+                      type="button"
+                      onClick={() => setSelectedOperator("VIVO")}
+                      className="flex items-center justify-between p-4 rounded-lg border-2 border-gray-200 hover:border-blue-600 hover:bg-blue-50 transition-colors cursor-pointer"
+                    >
+                      <span className="font-semibold text-lg" style={{ color: "#8B5CF6" }}>VIVO</span>
+                      <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => setSelectedOperator("TIM")}
+                      className="flex items-center justify-between p-4 rounded-lg border-2 border-gray-200 hover:border-blue-600 hover:bg-blue-50 transition-colors cursor-pointer"
+                    >
+                      <span className="font-semibold text-lg" style={{ color: "#1E90FF" }}>TIM</span>
+                      <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => setSelectedOperator("CLARO")}
+                      className="flex items-center justify-between p-4 rounded-lg border-2 border-gray-200 hover:border-blue-600 hover:bg-blue-50 transition-colors cursor-pointer"
+                    >
+                      <span className="font-semibold text-lg" style={{ color: "#DC143C" }}>CLARO</span>
+                      <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                  </div>
+                )}
+
+                {/* Seletor de Planos */}
+                {selectedOperator && (
+                  <div className="flex flex-col gap-4">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setSelectedOperator(null)
+                        handleInputChange("plan_id", "")
+                      }}
+                      className="flex items-center gap-2 text-blue-600 hover:text-blue-700 text-sm font-medium"
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                      </svg>
+                      Voltar para operadoras
+                    </button>
+
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                        Qual plano você deseja?
+                      </h3>
+
+                      <RadioGroup
+                        value={formData.plan_id}
+                        onValueChange={(value) => handleInputChange("plan_id", value)}
+                        className="flex flex-col gap-3"
+                      >
+                        {PLANS[selectedOperator].map((plan) => (
+                          <label
+                            key={plan.id}
+                            htmlFor={`plan-${plan.id}`}
+                            className={`flex items-start gap-3 p-4 rounded-lg border-2 cursor-pointer transition-colors ${
+                              formData.plan_id === plan.id
+                                ? "border-blue-600 bg-blue-50"
+                                : "border-gray-200 hover:border-gray-300"
+                            }`}
+                          >
+                            <RadioGroupItem value={plan.id} id={`plan-${plan.id}`} className="mt-0.5" />
+                            <div className="flex-1">
+                              <div className="font-medium text-gray-900">{plan.name}</div>
+                              <div className="text-sm text-gray-600 mt-1">
+                                R$ {plan.price.toFixed(2).replace(".", ",")}
+                              </div>
+                            </div>
+                          </label>
+                        ))}
+                      </RadioGroup>
+                    </div>
+                  </div>
+                )}
               </div>
             </CardContent>
           </Card>
