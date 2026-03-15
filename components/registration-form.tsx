@@ -309,17 +309,11 @@ export default function RegistrationForm({ representante }: RegistrationFormProp
 
       const webhookURLs: { [key: string]: string } = {
         "110956": "https://webhook.fiqon.app/webhook/a0265c1b-d832-483e-af57-8096334a57a8/e167dea4-079e-4af4-9b3f-4acaf711f432",
-        "167641": "https://webhook.fiqon.app/webhook/019be607-7078-705b-8c4d-47af993d4398/1006eb2e-eb37-4cff-a327-893d15364c02",
-        "110403": "https://webhook.fiqon.app/webhook/019a82d0-9018-73a8-9702-405595187191/15c6ef7c-a0c0-4b0a-b6cf-f873564be560",
         "88389": "https://webhook.fiqon.app/webhook/a02ccd6f-0d2f-401d-8d9b-c9e161d5330e/0624b4b1-d658-44d1-8291-ed8f0b5b3bf9",
-        "159726": "https://webhook.fiqon.app/webhook/019b9b1f-c2eb-716c-a0af-b729f6f83256/3a70ef2a-050a-46b8-883a-a2ea63d93243",
         "140894": "https://webhook.fiqon.app/webhook/019b9b2c-14e4-702c-b2e8-03caeb5615d4/6cc39296-2244-42e3-8e45-0bd92dae42bb",
-        "163994": "https://webhook.fiqon.app/webhook/019b9b0b-36fb-702e-aef4-788e7eb1c58d/655162cf-6868-4e73-92dd-c43ef37279fb",
-        "131966": "https://webhook.fiqon.app/webhook/a0436edd-0f48-454c-9fc2-f916fee56e34/ffc2252d-f738-4870-8287-81ea51a89542",
-        "108054": "https://webhook.fiqon.app/webhook/019b9b3f-4c25-7378-97f3-27329fcef7d1/50b76f62-30b6-431b-bbf4-cd5739412da3",
         "166779": "https://webhook.fiqon.app/webhook/019c4813-3f06-7021-aee4-2e794c82bcd5/8013cf50-adf6-4f91-8267-4569e0a3ddb4",
         "166775": "https://webhook.fiqon.app/webhook/019c6cfd-ee7b-712c-abd9-3c2930fef9f1/12390402-08e1-4514-b83f-b32c813c479f",
-        "103663": "https://webhook.fiqon.app/webhook/019ca4d9-d138-7180-8c2a-d822fad82eb2/c25f054d-e13c-46bf-b33c-5f8d0e9e0a2e",
+        "104393": "https://webhook.fiqon.app/webhook/019cf0cc-c804-70f7-aeaf-106bf7cd67fe/767f0345-4d45-47b1-a700-e8739f63c63d",
         "119294": "https://webhook.fiqon.app/webhook/019b9b15-2a9e-70a5-8ca1-19ac2e236a62/036e9dc0-0f7c-44b9-b16d-98b28832960f",
       }
 
