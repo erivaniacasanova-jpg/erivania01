@@ -297,12 +297,12 @@ export default function RegistrationForm({ representante }: RegistrationFormProp
       let formaEnvio = ""
       if (formData.typeFrete === "Carta") formaEnvio = "Carta Registrada"
       else if (formData.typeFrete === "semFrete") formaEnvio = "Retirar na Associação"
-      else if (formData.typeFrete === "eSim") formaEnvio = "e-SIM"
+      else if (formData.typeFrete === "eSim") formaEnvio = "eSim"
 
       const webhookData = {
         nome: formData.name, cpf: formData.cpf, data_nascimento: formData.birth, email: formData.email,
         whatsapp: formData.cell, telefone_fixo: "", plano: planName, plan_id: formData.plan_id,
-        tipo_chip: formData.typeChip === "fisico" ? "Físico" : "e-SIM", forma_envio: formaEnvio,
+        tipo_chip: formData.typeChip === "fisico" ? "Físico" : "eSim", forma_envio: formaEnvio,
         cep: formData.cep, endereco: formData.street, numero: formData.number, complemento: formData.complement,
         bairro: formData.district, cidade: formData.city, estado: formData.state, referral_id: REFERRAL_ID,
       }
@@ -471,7 +471,7 @@ export default function RegistrationForm({ representante }: RegistrationFormProp
                 <label htmlFor="chip-esim" className={`flex items-center gap-3 p-4 rounded-lg border-2 cursor-pointer transition-colors ${formData.typeChip === "eSim" ? "border-blue-600 bg-blue-50" : "border-gray-200 hover:border-gray-300"}`}>
                   <RadioGroupItem value="eSim" id="chip-esim" />
                   <div>
-                    <span className="font-medium text-gray-900">{"e-SIM"}</span>
+                    <span className="font-medium text-gray-900">{"eSim"}</span>
                   </div>
                 </label>
               </RadioGroup>
@@ -692,7 +692,7 @@ export default function RegistrationForm({ representante }: RegistrationFormProp
                   <label htmlFor="frete-esim" className={`flex items-center gap-3 p-4 rounded-lg border-2 cursor-pointer transition-colors ${formData.typeFrete === "eSim" ? "border-blue-600 bg-blue-50" : "border-gray-200 hover:border-gray-300"}`}>
                     <RadioGroupItem value="eSim" id="frete-esim" />
                     <div>
-                      <span className="font-medium text-gray-900">{"Sem a necessidade de envio (e-SIM)"}</span>
+                      <span className="font-medium text-gray-900">{"Sem a necessidade de envio (eSim)"}</span>
                       <p className="text-sm text-gray-500">{"O chip digital será ativado diretamente no seu aparelho"}</p>
                     </div>
                   </label>
