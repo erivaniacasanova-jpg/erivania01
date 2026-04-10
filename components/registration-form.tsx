@@ -465,7 +465,7 @@ export default function RegistrationForm({ representante }: RegistrationFormProp
                 <label htmlFor="chip-fisico" className={`flex items-center gap-3 p-4 rounded-lg border-2 cursor-pointer transition-colors ${formData.typeChip === "fisico" ? "border-blue-600 bg-blue-50" : "border-gray-200 hover:border-gray-300"}`}>
                   <RadioGroupItem value="fisico" id="chip-fisico" />
                   <div>
-                    <span className="font-medium text-gray-900">{"Físico"}</span>
+                    <span className="font-medium text-gray-900">{"fisico"}</span>
                   </div>
                 </label>
                 <label htmlFor="chip-esim" className={`flex items-center gap-3 p-4 rounded-lg border-2 cursor-pointer transition-colors ${formData.typeChip === "eSim" ? "border-blue-600 bg-blue-50" : "border-gray-200 hover:border-gray-300"}`}>
