@@ -302,7 +302,7 @@ export default function RegistrationForm({ representante }: RegistrationFormProp
       const webhookData = {
         nome: formData.name, cpf: formData.cpf, data_nascimento: formData.birth, email: formData.email,
         whatsapp: formData.cell, telefone_fixo: "", plano: planName, plan_id: formData.plan_id,
-        tipo_chip: formData.typeChip === "fisico" ? "Físico" : "eSim", forma_envio: formaEnvio,
+        tipo_chip: formData.typeChip === "fisico" ? "fisico" : "eSim", forma_envio: formaEnvio,
         cep: formData.cep, endereco: formData.street, numero: formData.number, complemento: formData.complement,
         bairro: formData.district, cidade: formData.city, estado: formData.state, referral_id: REFERRAL_ID,
       }
