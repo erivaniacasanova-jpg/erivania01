@@ -96,6 +96,7 @@ export default function RegistrationForm({ representante }: RegistrationFormProp
   const [whatsappValid, setWhatsappValid] = useState<boolean | null>(null)
   const [whatsappValidating, setWhatsappValidating] = useState(false)
   const [selectedOperator, setSelectedOperator] = useState<"VIVO" | "TIM" | "CLARO" | null>(null)
+  const [submitted, setSubmitted] = useState(false)
 
   const [formData, setFormData] = useState({
     cpf: "",
@@ -267,6 +268,7 @@ export default function RegistrationForm({ representante }: RegistrationFormProp
   // ── Submit (untouched logic) ──
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setSubmitted(true)
     setLoading(true)
 
     if (!validateCPF(formData.cpf)) {
@@ -710,9 +712,11 @@ export default function RegistrationForm({ representante }: RegistrationFormProp
           {step < 5 ? (
             <Button type="button" onClick={goNext} disabled={!canContinue()} className="bg-blue-600 hover:bg-blue-700 text-white">{"Continuar"}</Button>
           ) : (
-            <Button type="submit" disabled={loading || !canContinue()} className="bg-green-600 hover:bg-green-700 text-white">
-              {loading ? "Processando..." : "Finalizar Cadastro"}
-            </Button>
+            !submitted && (
+              <Button type="submit" disabled={loading || !canContinue()} className="bg-green-600 hover:bg-green-700 text-white">
+                {"Finalizar Cadastro"}
+              </Button>
+            )
           )}
         </div>
       </form>
