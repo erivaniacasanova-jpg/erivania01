@@ -18,17 +18,7 @@ export default async function RepresentantePage({ params }: { params: Promise<{ 
       id: "153542",
       nome: "Aline Aparecida Melo",
       whatsapp: "553193371195",
-    },
-    "88389": {
-      id: "88389",
-      nome: "Wagner Cruz Vieira",
-      whatsapp: "5521996098857",
-    },
-     "140894": {
-      id: "140894",
-      nome: "  Francisco Martins Ferreira",
-      whatsapp: "5584981317641",
-      },
+     },
     "156931": {
       id: "156931",
       nome: " Ataide Leite De Oliveira",
