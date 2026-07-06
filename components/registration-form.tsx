@@ -490,7 +490,7 @@ export default function RegistrationForm({ representante }: RegistrationFormProp
                     <button
                       type="button"
                       onClick={() => setSelectedOperator("VIVO")}
-                      className="flex items-center justify-between p-4 rounded-lg border-2 border-gray-200 hover:border-blue-600 hover:bg-blue-50 transition-colors cursor-pointer"
+                      className="hidden"
                     >
                       <span className="font-semibold text-lg" style={{ color: "#8B5CF6" }}>VIVO</span>
                       <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
