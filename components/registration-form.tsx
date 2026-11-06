@@ -43,7 +43,7 @@ const BRAZILIAN_STATES = [
   { value: "TO", label: "Tocantins" },
 ]
 
-const PLANS = const PLANS = {
+const PLANS = {
   CLARO: [
     { id: "179", name: "40GB COM LIGACAO", price: 49.9, esim: true },
     { id: "57", name: "80GB COM LIGACAO", price: 69.9, esim: true },
